@@ -134,11 +134,6 @@
     });
     </script>
 
-
-
-
-      <textarea id="output" rows="8" class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 mt-4" readonly="" placeholder="Your generated ad script will appear here..."></textarea>
-
       <button class="mt-4 text-blue-600 hover:underline" onclick="navigateTo('home')">
         Back to Home
       </button>
@@ -147,7 +142,14 @@
 
     <!-- Create by Brand Section -->
     <section id="create-by-brand" class="page hidden">
-      <h1 class="text-3xl font-bold text-gray-800 mb-6">Ad Script Generator</h1>
+      </head>
+<body class="bg-gray-100 min-h-screen flex justify-center items-center">
+  <div class="bg-white shadow-lg rounded-lg w-full max-w-6xl p-4 flex flex-col lg:flex-row">
+    <!-- Left Side: Input and Controls -->
+    <div class="lg:w-1/2 p-4 border-r border-gray-300">
+      <h1 class="text-2xl font-bold text-gray-800 mb-4">Ad Script Generator</h1>
+      
+      <!-- Dropdown to Select Template -->
       <div class="mb-4">
         <label for="template" class="block text-sm font-medium text-gray-700 mb-2">
           Select Template
@@ -159,17 +161,19 @@
         </select>
       </div>
 
+      <!-- Dropdown to Select Project Profile -->
       <div class="mb-4">
-        <label for="profile" class="block text-sm font-medium text-gray-700 mb-2">
+        <label for="projectProfile" class="block text-sm font-medium text-gray-700 mb-2">
           Select Project Profile
         </label>
-        <select id="profile" class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+        <select id="projectProfile" class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
           <option value="profile1">Profile 1: Young adults, USP: Affordable pricing, CTA: Sign up now!</option>
           <option value="profile2">Profile 2: Professionals, USP: High-quality service, CTA: Book a demo today!</option>
           <option value="profile3">Profile 3: Families, USP: Safe and reliable, CTA: Learn more!</option>
         </select>
       </div>
 
+      <!-- Extra Instructions -->
       <div class="mb-4">
         <label for="extraInstructions" class="block text-sm font-medium text-gray-700 mb-2">
           Extra Instructions (Optional)
@@ -177,12 +181,52 @@
         <textarea id="extraInstructions" rows="4" class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Add any additional instructions for the AI."></textarea>
       </div>
 
-      <button class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 transition">
+      <!-- Generate Button -->
+      <button id="generateButton" class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 transition">
         Generate Ad Script
       </button>
+    </div>
 
-      <textarea id="output" rows="8" class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 mt-4" readonly="" placeholder="Your generated ad script will appear here..."></textarea>
+    <!-- Right Side: Output -->
+    <div class="lg:w-1/2 p-4">
+      <h2 class="text-xl font-bold text-gray-800 mb-4">Output</h2>
+      <textarea id="output" rows="16" class="w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500" readonly="" placeholder="Your generated ad script will appear here..."></textarea>
+    </div>
+  </div>
 
+  <script>
+    // Mock LLL API Call
+    async function fetchPrompt(template, projectProfile, extraInstructions) {
+      // Replace this with your actual API call
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          const prompt = `Template: ${template}\n\nProject Profile:\n${projectProfile}\n\nExtra Instructions:\n${extraInstructions}\n\nGenerated Ad Script: This is the generated ad script based on the inputs provided.`;
+          resolve(prompt);
+        }, 1000);
+      });
+    }
+
+    document.getElementById('generateButton').addEventListener('click', async () => {
+      const template = document.getElementById('template').value;
+      const projectProfile = document.getElementById('projectProfile').value;
+      const extraInstructions = document.getElementById('extraInstructions').value;
+
+      // Show loading state
+      const outputBox = document.getElementById('output');
+      outputBox.value = 'Generating ad script...';
+
+      // Fetch the generated prompt
+      try {
+        const prompt = await fetchPrompt(template, projectProfile, extraInstructions);
+        outputBox.value = prompt;
+      } catch (error) {
+        outputBox.value = 'Error: Unable to generate the ad script. Please try again.';
+      }
+    });
+  </script>
+
+
+</body>
       <button class="mt-4 text-blue-600 hover:underline" onclick="navigateTo('home')">
         Back to Home
       </button>
