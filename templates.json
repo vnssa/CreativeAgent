@@ -1,0 +1,17 @@
+[
+  {
+    "id": "template1",
+    "name": "Template 1",
+    "content": "Looking to {USP}? {BrandName} is here to help. Take action today and {CTA}!"
+  },
+  {
+    "id": "template2",
+    "name": "Template 2",
+    "content": "Discover the best {USP} with {BrandName}. {CTA} today!"
+  },
+  {
+    "id": "template3",
+    "name": "Template 3",
+    "content": "{BrandName} is trusted for {USP}. Don't wait—{CTA}!"
+  }
+]
