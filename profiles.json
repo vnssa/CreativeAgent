@@ -1,0 +1,20 @@
+[
+  {
+    "id": "profile1",
+    "brandName": "YouthGear",
+    "USP": "affordable pricing",
+    "CTA": "sign up now"
+  },
+  {
+    "id": "profile2",
+    "brandName": "ProTech",
+    "USP": "high-quality service",
+    "CTA": "book a demo today"
+  },
+  {
+    "id": "profile3",
+    "brandName": "SafeHome",
+    "USP": "safety and reliability",
+    "CTA": "learn more"
+  }
+]
